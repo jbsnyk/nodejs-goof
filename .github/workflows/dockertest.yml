@@ -18,3 +18,9 @@ jobs:
 
       - name: snyk code test and snyk to HTML 
         run: snyk code test --json | snyk-to-html -o results-code.html
+
+      - name: upload snyk HTML report 
+        uses: actions/upload-artifact@v3
+        with:
+          name: snyk-html-report
+          path: results-code.html
