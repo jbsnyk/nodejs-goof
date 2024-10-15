@@ -6,7 +6,7 @@ jobs:
   build: 
     runs-on: ubuntu-latest
     container:
-      image: jbsnyk/jbsnykcustom
+      image: jbsnyk/jbsnykcustom:latest
       
     env:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} 
