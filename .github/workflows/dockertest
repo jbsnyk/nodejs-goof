@@ -1,0 +1,18 @@
+name: Custom CLI image Test
+
+on: workflow_dispatch
+
+jobs: 
+  build: 
+    runs-on: ubuntu-latest
+    container:
+      image: jbsnyk/jbsnykcustom
+    env:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} 
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: snyk code test and snyk to HTML 
+        run: snyk code test --json | snyk-to-html -o results-code.html
