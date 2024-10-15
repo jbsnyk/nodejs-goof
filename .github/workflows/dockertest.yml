@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: jbsnyk/jbsnykcustom
-      options: --entrypoint /bin/bash
+      
     env:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} 
 
