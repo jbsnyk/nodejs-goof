@@ -21,5 +21,5 @@ jobs:
       - name: Run script
         env:
           API_TOKEN: ${{ secrets.PROBELY_API_TOKEN }}
-          TARGET_ID: ${{ secrets.TARGET_ID }}
+          TARGET_ID: TARGET_ID
         run: python probely_wait_for_scan.py
