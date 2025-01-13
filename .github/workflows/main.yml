@@ -1,0 +1,25 @@
+name: "Probely Wait For Scan"
+
+on: workflow_dispatch
+
+jobs:
+  probely:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+
+      - name: Set up python
+        uses: actions/setup-python@v5.3.0
+
+      - name: Install deps
+        run: |
+          python --pip install --upgrade pip
+          pip install requests
+
+      - name: Run script
+        env:
+          API_TOKEN: ${{ secrets.PROBELY_API_TOKEN }}
+          TARGET_ID: ${{ secrets.TARGET_ID }}
+        run: python probely_wait_for_scan.py
