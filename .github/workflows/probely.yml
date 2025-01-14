@@ -22,6 +22,6 @@ jobs:
         env:
           API_TOKEN: ${{ secrets.PROBELY_API_TOKEN }}
         run: |
-          echo "using token: $API_TOKEN"
+          echo "using token: ${#API_TOKEN}"
           export TARGET_ID=3EuGpmYZL7S1
           python probely_wait_for_scan.py
