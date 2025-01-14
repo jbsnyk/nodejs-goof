@@ -49,6 +49,9 @@ def wait_for_scan(scan_id):
                 print("scan completed succesfully")
                 return
             print(f"scan status: {status}. Waiting for {POLL_INTERVAL} seconds")
+            elif status == "failed":
+                print("Scan failed, see Probely UI for details")
+                sys.exit(1)
             time.sleep(int(POLL_INTERVAL))
         except requests.exceptions.RequestException as e:
             print(f"Error getting scan status: {e}")
