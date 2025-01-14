@@ -1,9 +1,7 @@
 name: "Probely Wait For Scan"
 
 on: workflow_dispatch
-env:
-  API_TOKEN: ${{ secrets.PROBELY_API_TOKEN }}
-  TARGET_ID: 3EuGpmYZL7S1
+
 jobs:
   probely:
     runs-on: ubuntu-latest
@@ -21,4 +19,7 @@ jobs:
           pip install requests
 
       - name: Run script
-        run: python probely_wait_for_scan.py
+        run: |
+          export API_TOKEN=${{ secrets.PROBELY_API_TOKEN }}
+          export TARGET_ID=3EuGpmYZL7S1
+          python probely_wait_for_scan.py
