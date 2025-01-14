@@ -12,8 +12,8 @@ POLL_INTERVAL = "180"
 # Set Headers for API Calls
 
 headers = {
+    "Accept": "application/json"
     "Authorization": f"JWT {API_TOKEN}",
-    "Content_Type": "application/json",
 }
 
 # Function for starting a scan
