@@ -12,7 +12,7 @@ POLL_INTERVAL = "180"
 # Set Headers for API Calls
 
 headers = {
-    "Accept": "application/json"
+    "Accept': "application/json",
     "Authorization": f"JWT {API_TOKEN}",
 }
 
