@@ -73,7 +73,7 @@ def fetch_and_check_findings():
 
 # Start the scan, wait for completion
 def main():
-    if not API_BASE_URL or not TARGET_ID:
+    if not API_TOKEN or not TARGET_ID:
         print("Error: API_TOKEN or TARGET)ID is not set.")
         sys.exit(1)
     
