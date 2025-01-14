@@ -23,6 +23,5 @@ jobs:
           API_TOKEN: ${{ secrets.PROBELY_API_TOKEN }}
         run: |
           echo "using token: ${#API_TOKEN}"
-          curl -H "Authorization: JWT $API_TOKEN" https://api.probely.com/targets/
           export TARGET_ID=3EuGpmYZL7S1
           python probely_wait_for_scan.py
