@@ -65,8 +65,10 @@ def fetch_and_check_findings():
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         data = response.json()
-        if any(item.get("severity") == 30 for item in data.get("results", [])):
-            print(f"high severity findings detected, please see web UI for results")
+        high_severity_findings = [item for item in data.get("results", []) if items.get("severity") == 30]
+        count = len(high_severity_findings)
+        if count > 0
+            print(f" {count} high severity findings detected, please see web UI for results")
             sys.exit(1)
         else:
             print("no high severity findings found")
