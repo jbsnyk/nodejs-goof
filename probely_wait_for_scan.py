@@ -61,11 +61,20 @@ def wait_for_scan(scan_id):
 def fetch_and_check_findings():
     print("Fetching findings and checking for high sev")
     url = f"{API_BASE_URL}/targets/{TARGET_ID}/findings/"
+    high_severity_findings = []
+    
     try:
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
-        data = response.json()
-        high_severity_findings = [item for item in data.get("results", []) if item.get("severity") == 30]
+        current_page = 1
+        while True:
+            response = requests.get(url, headers=headers, params={"pages": current_pages})
+            response.raise_for_status()
+            data = response.json()
+            findings = data.get("results", [])
+            high_severity_findings.extend([item for item in data.get("results", []) if item.get("severity") == 30])
+            page_total = data.get("page_total")
+            if current_page >= page_total
+                break
+            current_page +=1
         count = len(high_severity_findings)
         if count > 0:
             print(f" {count} high severity findings detected, please see web UI for results")
