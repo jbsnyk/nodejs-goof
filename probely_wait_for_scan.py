@@ -72,7 +72,7 @@ def fetch_and_check_findings():
             findings = data.get("results", [])
             high_severity_findings.extend([item for item in data.get("results", []) if item.get("severity") == 30])
             page_total = data.get("page_total")
-            if current_page >= page_total
+            if current_page >= page_total:
                 break
             current_page +=1
         count = len(high_severity_findings)
