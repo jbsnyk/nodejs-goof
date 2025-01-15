@@ -66,7 +66,7 @@ def fetch_and_check_findings():
     try:
         current_page = 1
         while True:
-            response = requests.get(url, headers=headers, params={"pages": current_pages})
+            response = requests.get(url, headers=headers, params={"pages": current_page})
             response.raise_for_status()
             data = response.json()
             findings = data.get("results", [])
