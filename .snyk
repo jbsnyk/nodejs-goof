@@ -1,10 +1,6 @@
-# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.25.0
-# ignores vulnerabilities until expiry date; change duration by modifying expiry date
-ignore:
-  SNYK-JS-UNDERSCORE-1080984:
-    - '*':
-        reason: test12
-        expires: 2024-10-19T19:37:24.536Z
-        created: 2024-09-19T19:37:24.537Z
-patch: {}
+# Snyk (https://snyk.io) policy file
+---
+exclude:
+    global:
+        # Exclude all files and directories located within any specified folder within your Project. For example, directory_name/** matches and excludes all contents under any directory named directory_name. It is not constrained to the root level or the location of the .snyk file.
+        - directory_name/**
