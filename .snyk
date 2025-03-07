@@ -3,4 +3,4 @@
 exclude:
     global:
         # Exclude all files and directories located within any specified folder within your Project. For example, directory_name/** matches and excludes all contents under any directory named directory_name. It is not constrained to the root level or the location of the .snyk file.
-        - directory_name/**
+        - tests/**
