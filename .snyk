@@ -1,6 +1,20 @@
-# Snyk (https://snyk.io) policy file
----
-exclude:
-    global:
-        # Exclude all files and directories located within any specified folder within your Project. For example, directory_name/** matches and excludes all contents under any directory named directory_name. It is not constrained to the root level or the location of the .snyk file.
-        - tests/**
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.1
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-JS-UNDERSCORE-1080984:
+    - '*':
+        reason: test
+        expires: 2024-10-19T19:37:24.536Z
+        created: 2024-09-19T19:37:24.537Z
+  'snyk:lic:npm:types:color-name:MIT':
+    - '*':
+        reason: None Given
+        expires: 2025-05-03T19:58:53.424Z
+        created: 2025-04-03T19:58:53.427Z
+  SNYK-JS-ADMZIP-1065796:
+    - '*':
+        reason: None Given
+        expires: 2025-07-05T18:33:21.776Z
+        created: 2025-06-05T18:33:21.781Z
+patch: {}
