@@ -11,8 +11,8 @@ This vulnerable app includes the following capabilities to experiment with:
 * [Runtime alerts](#runtime-alerts) for detecting an invocation of vulnerable functions in open source dependencies
 
 ## Running
-```bash
-mongod &
+```bashcd
+mongod &gfgf
 
 git clone https://github.com/snyk-labs/nodejs-goof
 npm install
