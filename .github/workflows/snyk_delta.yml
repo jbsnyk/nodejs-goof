@@ -5,6 +5,7 @@ on:
     branches: [main]
   push:
     branches: [main]
+  workflow_dispatch: 
 
 env:
   SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
