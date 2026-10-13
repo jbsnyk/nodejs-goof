@@ -1,0 +1,38 @@
+name: Snyk Delta
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+env:
+  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+  # Optional: set if you need to target a specific org
+  # SNYK_CFG_ORG: your-org-id-or-slug
+
+jobs:
+  snyk-delta:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Add your language setup/dependency install steps here
+      # (e.g. actions/setup-node + npm ci, setup-java, etc.)
+
+      - name: Install Snyk CLI and snyk-delta
+        run: npm install -g snyk snyk-delta
+
+      - name: Download snyk_delta_all_projects.sh
+        run: |
+          # Pin to a commit SHA instead of 'develop' for reproducible, safer builds
+          curl -sSfL -o snyk_delta_all_projects.sh \
+            https://raw.githubusercontent.com/snyk-tech-services/snyk-delta/develop/snyk_delta_all_projects.sh
+          chmod +x snyk_delta_all_projects.sh
+
+      - name: Run snyk-delta across all projects
+        run: |
+          # jq is preinstalled on ubuntu-latest runners.
+          # Args are passed through to `snyk test --all-projects --json`
+          ./snyk_delta_all_projects.sh --severity-threshold=high --exclude=tests,resources
