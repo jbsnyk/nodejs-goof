@@ -1,7 +1,7 @@
 name: Snyk Delta
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
 
 env:
   SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
@@ -14,8 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Add your language setup/dependency install steps here
-      # (e.g. actions/setup-node + npm ci, setup-java, etc.)
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install project dependencies
+        run: npm install
 
       - name: Install Snyk CLI and snyk-delta
         run: npm install -g snyk snyk-delta
@@ -32,3 +37,4 @@ jobs:
           # jq is preinstalled on ubuntu-latest runners.
           # Args are passed through to `snyk test --all-projects --json`
           ./snyk_delta_all_projects.sh --severity-threshold=high --exclude=tests,resources -d
+
