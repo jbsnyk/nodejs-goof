@@ -31,4 +31,4 @@ jobs:
         run: |
           # jq is preinstalled on ubuntu-latest runners.
           # Args are passed through to `snyk test --all-projects --json`
-          ./snyk_delta_all_projects.sh --severity-threshold=high --exclude=tests,resources
+          ./snyk_delta_all_projects.sh --severity-threshold=high --exclude=tests,resources -d
